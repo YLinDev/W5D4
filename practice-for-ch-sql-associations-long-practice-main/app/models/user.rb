@@ -10,13 +10,12 @@
 class User < ApplicationRecord
   validates :name, presence: true
 
-  has_many :enrollments,
+  has_many :enrollments, #Show the n Users enrollment 
            class_name: :Enrollment,
            primary_key: :id,
            foreign_key: :student_id
 
-  has_many :enrolled_courses,
-           primary_key: :id,
-           foreign_key: :course_id,
-           class_name: :Course
+  has_many :enrolled_courses, #Show the n Users courses
+           through: :enrollments,
+           source: :course
 end
