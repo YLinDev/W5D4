@@ -8,4 +8,14 @@
 #  updated_at :datetime         not null
 #
 class User < ApplicationRecord
+    validates :name, presence: true
+
+    has_many :enrolled_courses,
+        primary_key: :id, 
+        foreign_key: :course_id,
+        class_name: :Course
+    
+    has_many :enrollments
+        primary_key: :id,
+        foreign_key: :
 end
